@@ -14,10 +14,10 @@
             <div class="col">
                 <h1><strong>RISPONDI ALLE DOMANDE DEL QUIZ</strong></h1>
                 <div class="testo"></div>
-                <div>
+                <form>
                     <input type="text" name="risposta" id="risposta"/>
                     <input type="submit" name="Rispondi" class="button" id="butt"/>
-                </div>
+                </form>
                 <div class="risultato" id="risultato"></div>
             </div>
             <div class="col"></div>
@@ -40,6 +40,7 @@
             let risultato = document.getElementById("risultato");
             let risposta = document.getElementById("risposta");
             let bottone = document.getElementById("butt");
+            let form = document.querySelector("form");
 
             function question() {
                 if (i < Domande.length) {
@@ -51,7 +52,8 @@
                 }
             }
 
-            bottone.addEventListener("click", function() {
+            form.addEventListener("submit", function(event) {
+                event.preventDefault()
                 if (i < Domande.length) {
                     let rispostaUtente = risposta.value.trim().toLowerCase();
                     let corretta = Domande[i].corretta.toLowerCase();
